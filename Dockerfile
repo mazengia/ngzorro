@@ -1,5 +1,5 @@
 # BASE IMAGE with an alias #
-FROM node:v14.17.3 as build
+FROM node:14.17.3-alpine3.11 as build
 WORKDIR /app
 
 
@@ -18,3 +18,6 @@ FROM nginx as runtime
 # We now have our angular application built and the binaries available under /app/dist/ngzoro in the container
 # so   copy angular files into the path "/usr/share/nginx/html-> which is docker servers default index file is found here"
 COPY --from=build /app/dist/ngzoro /usr/share/nginx/html 
+
+
+ 
